@@ -7,7 +7,6 @@ import core.io.crud.hex.pessoa.application.ports.out.SavePessoaOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class SavePessoaUseCase implements SavePessoaInputPort {
 
     @Autowired

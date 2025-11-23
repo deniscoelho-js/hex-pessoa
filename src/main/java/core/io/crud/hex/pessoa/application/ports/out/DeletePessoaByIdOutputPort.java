@@ -2,8 +2,6 @@ package core.io.crud.hex.pessoa.application.ports.out;
 
 import core.io.crud.hex.pessoa.application.core.domain.Pessoa;
 
-import java.util.Optional;
-
-public interface FindByIdPessoaOutputPort {
-    Optional<Pessoa> findById(Long id);
+public interface DeletePessoaByIdOutputPort {
+    void deleteById(Long id);
 }

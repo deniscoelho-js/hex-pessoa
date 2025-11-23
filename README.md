@@ -68,4 +68,4 @@ Este projeto foi desenvolvido utilizando:
 ## 📂 Clone o repositório
 
 ```bash
-git clone https://github.com/deniscoelho-js/biblioteca.git
+git clone https://github.com/deniscoelho-js/hex-pessoa.git

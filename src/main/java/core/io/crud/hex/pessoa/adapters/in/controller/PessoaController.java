@@ -7,7 +7,7 @@ import core.io.crud.hex.pessoa.application.core.domain.Pessoa;
 import core.io.crud.hex.pessoa.application.ports.in.DeletePessoaByIdInputPort;
 import core.io.crud.hex.pessoa.application.ports.in.FindPessoaByIdInputPort;
 import core.io.crud.hex.pessoa.application.ports.in.SavePessoaInputPort;
-import core.io.crud.hex.pessoa.application.ports.out.SavePessoaOutputPort;
+import core.io.crud.hex.pessoa.application.ports.in.UpdatePessoaInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +25,9 @@ public class PessoaController {
 
     @Autowired
     private DeletePessoaByIdInputPort deletePessoaByIdInputPort;
+
+    @Autowired
+    private UpdatePessoaInputPort updatePessoaInputPort;
 
     @Autowired
     private PessoaDTOMapper pessoaDTOMapper;
@@ -48,5 +51,14 @@ public class PessoaController {
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         deletePessoaByIdInputPort.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PessoaResponse> update(@PathVariable Long id, @RequestBody PessoaRequest pessoaRequest) {
+        Pessoa pessoa = pessoaDTOMapper.toPessoa(pessoaRequest);
+        pessoa.setId(id);
+        Pessoa pessoaAtualizada = updatePessoaInputPort.update(id, pessoa);
+        var pessoaResponse = pessoaDTOMapper.toPessoaResponse(pessoaAtualizada);
+        return ResponseEntity.ok().body(pessoaResponse);
     }
 }

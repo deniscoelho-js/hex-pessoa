@@ -1,7 +1,6 @@
 package core.io.crud.hex.pessoa.adapters.out;
 
 import core.io.crud.hex.pessoa.adapters.out.repository.PessoaRepository;
-import core.io.crud.hex.pessoa.application.core.domain.Pessoa;
 import core.io.crud.hex.pessoa.application.ports.out.DeletePessoaByIdOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

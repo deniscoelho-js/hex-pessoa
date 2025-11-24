@@ -9,10 +9,11 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PessoaResponse {
-    private Long id;
-    private String nome;
-    private String email;;
-    private String pais;
-    private EnderecoResponse enderecoResponse;
+public class EnderecoResponse {
+    private String cep;
+    private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
 }

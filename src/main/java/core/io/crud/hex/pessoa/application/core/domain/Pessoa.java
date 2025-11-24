@@ -15,4 +15,5 @@ public class Pessoa {
     private String email;
     private String senha;
     private String pais;
+    private String cep;
 }

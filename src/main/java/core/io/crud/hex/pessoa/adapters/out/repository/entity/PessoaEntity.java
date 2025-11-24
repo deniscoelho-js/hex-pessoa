@@ -22,4 +22,5 @@ public class PessoaEntity {
     private String email;
     private String senha;
     private String pais;
+    private String cep;
 }

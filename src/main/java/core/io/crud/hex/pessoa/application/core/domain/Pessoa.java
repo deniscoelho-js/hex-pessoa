@@ -1,5 +1,6 @@
 package core.io.crud.hex.pessoa.application.core.domain;
 
+import core.io.crud.hex.pessoa.adapters.dto.response.EnderecoResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,5 @@ public class Pessoa {
     private String senha;
     private String pais;
     private String cep;
+    private Endereco endereco;
 }

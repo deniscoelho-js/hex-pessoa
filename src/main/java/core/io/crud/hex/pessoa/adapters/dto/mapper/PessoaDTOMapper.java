@@ -6,11 +6,12 @@ import core.io.crud.hex.pessoa.application.core.domain.Pessoa;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = EnderecoMapper.class)
 public interface PessoaDTOMapper {
 
     Pessoa toPessoa(PessoaRequest pessoaRequest);
 
-    @Mapping(target = "id", source = "id")
+//    @Mapping(target = "id", source = "id")
+    @Mapping(target = "enderecoResponse", source = "endereco") // ✅ mapeia Endereco → EnderecoResponse
     PessoaResponse toPessoaResponse(Pessoa pessoa);
 }

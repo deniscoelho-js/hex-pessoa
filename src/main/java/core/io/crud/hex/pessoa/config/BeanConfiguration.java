@@ -1,5 +1,6 @@
 package core.io.crud.hex.pessoa.config;
 
+import core.io.crud.hex.pessoa.adapters.out.client.EnderecoClient;
 import core.io.crud.hex.pessoa.application.core.usecase.*;
 import core.io.crud.hex.pessoa.application.ports.in.*;
 import core.io.crud.hex.pessoa.application.ports.out.*;
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class BeanConfiguration {
 
     @Bean
-    public SavePessoaInputPort savePessoaUseCase(SavePessoaOutputPort savePessoaOutputPort) {
-        return new SavePessoaUseCase(savePessoaOutputPort);
+    public SavePessoaInputPort savePessoaUseCase(SavePessoaOutputPort savePessoaOutputPort, EnderecoClient enderecoClient) {
+        return new SavePessoaUseCase(savePessoaOutputPort, enderecoClient);
     }
 
     @Bean

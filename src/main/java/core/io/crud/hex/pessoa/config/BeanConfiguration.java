@@ -1,17 +1,8 @@
 package core.io.crud.hex.pessoa.config;
 
-import core.io.crud.hex.pessoa.application.core.usecase.DeleteByIdUseCase;
-import core.io.crud.hex.pessoa.application.core.usecase.FindPessoaByIdUseCase;
-import core.io.crud.hex.pessoa.application.core.usecase.SavePessoaUseCase;
-import core.io.crud.hex.pessoa.application.core.usecase.UpdatePessoaUseCase;
-import core.io.crud.hex.pessoa.application.ports.in.DeletePessoaByIdInputPort;
-import core.io.crud.hex.pessoa.application.ports.in.FindPessoaByIdInputPort;
-import core.io.crud.hex.pessoa.application.ports.in.SavePessoaInputPort;
-import core.io.crud.hex.pessoa.application.ports.in.UpdatePessoaInputPort;
-import core.io.crud.hex.pessoa.application.ports.out.DeletePessoaByIdOutputPort;
-import core.io.crud.hex.pessoa.application.ports.out.FindByIdPessoaOutputPort;
-import core.io.crud.hex.pessoa.application.ports.out.SavePessoaOutputPort;
-import core.io.crud.hex.pessoa.application.ports.out.UpdatePessoaOutputPort;
+import core.io.crud.hex.pessoa.application.core.usecase.*;
+import core.io.crud.hex.pessoa.application.ports.in.*;
+import core.io.crud.hex.pessoa.application.ports.out.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -38,5 +29,10 @@ public class BeanConfiguration {
     public UpdatePessoaInputPort updatePessoaUseCase(UpdatePessoaOutputPort updatePessoaOutputPort,
                                                      FindPessoaByIdInputPort findPessoaByIdInputPort) {
         return new UpdatePessoaUseCase(updatePessoaOutputPort, findPessoaByIdInputPort);
+    }
+
+    @Bean
+    public FindAllInputPort findAllUseCase(FindAllOutputPort findAllOutputPort) {
+        return new FindAllUseCase(findAllOutputPort);
     }
 }

@@ -4,17 +4,17 @@ import core.io.crud.hex.pessoa.adapters.dto.mapper.PessoaDTOMapper;
 import core.io.crud.hex.pessoa.adapters.dto.request.PessoaRequest;
 import core.io.crud.hex.pessoa.adapters.dto.response.PessoaResponse;
 import core.io.crud.hex.pessoa.application.core.domain.Pessoa;
-import core.io.crud.hex.pessoa.application.ports.in.DeletePessoaByIdInputPort;
-import core.io.crud.hex.pessoa.application.ports.in.FindPessoaByIdInputPort;
-import core.io.crud.hex.pessoa.application.ports.in.SavePessoaInputPort;
-import core.io.crud.hex.pessoa.application.ports.in.UpdatePessoaInputPort;
+import core.io.crud.hex.pessoa.application.ports.in.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
-@RequestMapping("/pessoa")
+@RequestMapping("/pessoas")
 public class PessoaController {
 
     @Autowired
@@ -22,6 +22,9 @@ public class PessoaController {
 
     @Autowired
     private FindPessoaByIdInputPort findPessoaByIdInputPort;
+
+    @Autowired
+    private FindAllInputPort findAllInputPort;
 
     @Autowired
     private DeletePessoaByIdInputPort deletePessoaByIdInputPort;
@@ -45,6 +48,15 @@ public class PessoaController {
         var pessoa = findPessoaByIdInputPort.findById(id);
         var pessoaResponse = pessoaDTOMapper.toPessoaResponse(pessoa);
         return ResponseEntity.ok(pessoaResponse);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PessoaResponse>> findAll() {
+        List<Pessoa> pessoas = findAllInputPort.findAll();
+        List<PessoaResponse> responses = pessoas.stream()
+                .map(pessoaDTOMapper::toPessoaResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(responses);
     }
 
     @DeleteMapping("/{id}")

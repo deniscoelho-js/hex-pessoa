@@ -14,4 +14,5 @@ public class PessoaRequest {
     private String email;
     private String senha;
     private String pais;
+    private String cep;
 }

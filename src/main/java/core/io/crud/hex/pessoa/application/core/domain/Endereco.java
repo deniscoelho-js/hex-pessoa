@@ -8,6 +8,9 @@ public class Endereco {
     private String localidade;
     private String uf;
 
+    public Endereco() {
+    }
+
     public Endereco(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
         this.cep = cep;
         this.logradouro = logradouro;
@@ -15,9 +18,6 @@ public class Endereco {
         this.bairro = bairro;
         this.localidade = localidade;
         this.uf = uf;
-    }
-
-    public Endereco() {
     }
 
     public String getCep() {

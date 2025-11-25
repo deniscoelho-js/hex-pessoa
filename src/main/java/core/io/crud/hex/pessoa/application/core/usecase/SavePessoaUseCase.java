@@ -21,14 +21,10 @@ public class SavePessoaUseCase implements SavePessoaInputPort {
 
     @Override
     public Pessoa save(Pessoa pessoa) {
-//        var endereco = enderecoClient.getEndereco(pessoa.getCep());
-//        pessoa.setEndereco(endereco);
-//        return savePessoaOutputPort.save(pessoa);
         var endereco = enderecoClient.getEndereco(pessoa.getCep());
         pessoa.setEndereco(endereco);
-
         var pessoaSalva = savePessoaOutputPort.save(pessoa);
-        pessoaSalva.setEndereco(endereco); // garante que volta preenchido
+        pessoaSalva.setEndereco(endereco);
 
         return pessoaSalva;
     }

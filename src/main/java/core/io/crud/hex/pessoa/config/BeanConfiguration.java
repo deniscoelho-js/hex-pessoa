@@ -16,8 +16,8 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public FindPessoaByIdInputPort findPessoaByIdUseCase(FindByIdPessoaOutputPort findByIdPessoaOutputPort) {
-        return new FindPessoaByIdUseCase(findByIdPessoaOutputPort);
+    public FindPessoaByIdInputPort findPessoaByIdUseCase(FindByIdPessoaOutputPort findByIdPessoaOutputPort, EnderecoClient enderecoClient) {
+        return new FindPessoaByIdUseCase(findByIdPessoaOutputPort, enderecoClient);
     }
 
     @Bean
@@ -28,12 +28,12 @@ public class BeanConfiguration {
 
     @Bean
     public UpdatePessoaInputPort updatePessoaUseCase(UpdatePessoaOutputPort updatePessoaOutputPort,
-                                                     FindPessoaByIdInputPort findPessoaByIdInputPort) {
-        return new UpdatePessoaUseCase(updatePessoaOutputPort, findPessoaByIdInputPort);
+                                                     FindPessoaByIdInputPort findPessoaByIdInputPort, EnderecoClient enderecoClient) {
+        return new UpdatePessoaUseCase(updatePessoaOutputPort, findPessoaByIdInputPort, enderecoClient);
     }
 
     @Bean
-    public FindAllInputPort findAllUseCase(FindAllOutputPort findAllOutputPort) {
-        return new FindAllUseCase(findAllOutputPort);
+    public FindAllInputPort findAllUseCase(FindAllOutputPort findAllOutputPort, EnderecoClient enderecoClient) {
+        return new FindAllUseCase(findAllOutputPort, enderecoClient);
     }
 }
